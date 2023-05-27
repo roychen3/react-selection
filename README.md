@@ -24,15 +24,15 @@ import SelectionArea from './SelectionArea';
 function Component() {
   return (
     <SelectionArea
-        children     // ReactNode
-        disabled     // boolean | undefined
-        color        // SelectionBoxColor | undefined
-        onChange     // (selectedElements: Element[]) => void | undefined
-        onStart      // (selectedElements: Element[], event: MouseEvent) => void | undefined
-        onEnd        // (selectedElements: Element[], event: MouseEvent) => void | undefined
-        onClick      // (selectedElements: Element[], event: MouseEvent) => void | undefined
-        onItemClick  // (selectedElement: Element, event: MouseEvent) => void | undefined
-        getElement   // (() => Element[]) | string | undefined
+      children     // ReactNode
+      disabled     // boolean | undefined
+      color        // SelectionBoxColor | undefined
+      onChange     // (selectedElements: Element[]) => void | undefined
+      onStart      // (selectedElements: Element[], event: MouseEvent) => void | undefined
+      onEnd        // (selectedElements: Element[], event: MouseEvent) => void | undefined
+      onClick      // (selectedElements: Element[], event: MouseEvent) => void | undefined
+      onItemClick  // (selectedElement: Element, event: MouseEvent) => void | undefined
+      getElement   // (() => Element[]) | string | undefined
     >
       {list.map((item) => (
         <div
