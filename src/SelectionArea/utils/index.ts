@@ -1,54 +1,14 @@
-import type {
-  MousePosition,
-  SelectionBoxColor,
-  SelectionBoxPosition,
-} from '../types';
+import type { MousePosition, SelectionBoxPosition } from '../types';
 
-export function toHexColor(color: number | string | [number, number, number]) {
-  if (typeof color === 'number') {
-    return `#${color.toString(16).padStart(6, '0')}`;
-  }
-  if (Array.isArray(color)) {
-    return (
-      '#' +
-      color[0].toString(16) +
-      color[1].toString(16) +
-      color[2].toString(16)
-    );
-  }
-  return color;
-}
-export function toRGB(
-  color: number | string | [number, number, number]
-): [number, number, number] {
-  if (typeof color === 'string') {
-    return [
-      parseInt(color.slice(1, 3), 16),
-      parseInt(color.slice(3, 5), 16),
-      parseInt(color.slice(5, 7), 16),
-    ];
-  }
-  if (typeof color === 'number') {
-    const r = (color >> 16) & 0xff;
-    const g = (color >> 8) & 0xff;
-    const b = color & 0xff;
-    return [r, g, b];
-  }
-  return color;
-}
-export function createSelectionBoxStyle(
-  color: SelectionBoxColor,
-  position: SelectionBoxPosition
-) {
-  const [colorR, colorG, colorB] = toRGB(color);
+export function createSelectionBoxStyle(position: SelectionBoxPosition) {
   const style = {
     position: 'fixed',
     left: `${position.left}px`,
     top: `${position.top}px`,
     width: `${position.width}px`,
     height: `${position.height}px`,
-    border: `2px solid ${toHexColor(color)}`,
-    background: `rgba(${colorR}, ${colorG}, ${colorB}, 0.3)`,
+    border: `2px solid #1677ff`,
+    'background-color': `rgba(22, 119, 255, 0.3)`,
     'box-sizing': 'border-box',
   };
   return style;
@@ -77,8 +37,7 @@ export function calculateSelectionBoxPosition(
   mouseCurrentPosition: MousePosition,
   selectionAreaElement: HTMLDivElement
 ) {
-  const selectionAreaRect =
-    selectionAreaElement.getBoundingClientRect();
+  const selectionAreaRect = selectionAreaElement.getBoundingClientRect();
   const diffX = mouseCurrentPosition.x - mouseDownPosition.x;
   const diffY = mouseCurrentPosition.y - mouseDownPosition.y;
   const newWidth = Math.abs(diffX);
@@ -102,10 +61,8 @@ export function calculateSelectionBoxPosition(
   const isOverBottomBoundary =
     isAtBottomInStartPosition &&
     mouseDownPosition.y + newHeight > selectionAreaRect.bottom;
-  const overLeftBoundaryWidth =
-    mouseDownPosition.x - selectionAreaRect.left;
-  const overTopBoundaryHeight =
-    mouseDownPosition.y - selectionAreaRect.top;
+  const overLeftBoundaryWidth = mouseDownPosition.x - selectionAreaRect.left;
+  const overTopBoundaryHeight = mouseDownPosition.y - selectionAreaRect.top;
   const checkOverLeftBoundaryWidth = isOverLeftBoundary
     ? overLeftBoundaryWidth
     : newWidth;

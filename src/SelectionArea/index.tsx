@@ -12,7 +12,6 @@ import {
 
 import type { SelectionAreaProps, MousePosition } from './types';
 
-const defaultColor = 0x1677ff;
 const defaultMouseDownPosition = { x: 0, y: 0 };
 const defaultGetElement = '[data-id]';
 const defaultMultipleKeys = {
@@ -24,7 +23,6 @@ const defaultMultipleKeys = {
 const SelectionArea = ({
   children,
   disabled,
-  color = defaultColor,
   onChange,
   onStart,
   onEnd,
@@ -72,7 +70,7 @@ const SelectionArea = ({
         mouseCurrentPosition,
         selectionAreaRef.current
       );
-      const style = createSelectionBoxStyle(color, newSelectionBoxPosition);
+      const style = createSelectionBoxStyle(newSelectionBoxPosition);
       const cssText = objectToString(style);
       selectionBoxRef.current.style.cssText = cssText;
     };
@@ -151,7 +149,6 @@ const SelectionArea = ({
       }
     };
   }, [
-    color,
     getItemElements,
     selectionBoxOpen,
     selectedElements,
