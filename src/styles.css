@@ -1,3 +1,7 @@
+body {
+  background-color: #23272f;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -5,25 +9,41 @@
 
 .selection-container {
   margin: 0 auto;
-  width: 60%;
+  width: 75%;
+  max-width: 650px;
 }
 
 .inner-container {
-  min-height: 95vh;
-  border: 2px solid brown;
+  border: 3px solid #149eca;
+  background-color: #23272f;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .block {
-  padding: 0.25rem;
-  background-color: black;
+  background-color: #191c22;
   color: white;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  border-radius: 8px;
 }
 
 .block:hover {
-  background-color: gray;
+  outline: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .block--selected,
 .block--selected:hover {
-  background-color: brown;
+  background-color: #149eca;
+}
+
+.block__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
