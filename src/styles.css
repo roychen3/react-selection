@@ -1,0 +1,29 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.selection-container {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.inner-container {
+  min-height: 95vh;
+  border: 2px solid brown;
+}
+
+.block {
+  padding: 0.25rem;
+  background-color: black;
+  color: white;
+}
+
+.block:hover {
+  background-color: gray;
+}
+
+.block--selected,
+.block--selected:hover {
+  background-color: brown;
+}
