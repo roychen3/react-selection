@@ -168,7 +168,7 @@ export default function App() {
                 className={`block${item.focus ? ' block--selected' : ''}`}
                 data-id={item.id}
               >
-                <span className='block__text'>{item.id}</span>
+                <span className="block__text">{item.id}</span>
               </div>
             ))}
           </div>

@@ -12,7 +12,19 @@ export type SelectionBoxPosition = {
   height: number;
 };
 
-export interface SelectionAreaProps {
+type SelectionAreaHTMLProps = Omit<
+  React.HTMLProps<HTMLDivElement>,
+  | 'children'
+  | 'disabled'
+  | 'onChange'
+  | 'onStart'
+  | 'onEnd'
+  | 'onClick'
+  | 'onItemClick'
+  | 'getElement'
+>;
+
+export interface SelectionAreaProps extends SelectionAreaHTMLProps {
   children: ReactNode;
   disabled?: boolean;
   onChange?: (selectedElements: Element[]) => void;

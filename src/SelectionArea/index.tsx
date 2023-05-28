@@ -29,6 +29,7 @@ const SelectionArea = ({
   onClick,
   onItemClick,
   getElement = defaultGetElement,
+  ...props
 }: SelectionAreaProps) => {
   const mouseDownPositionRef = useRef<MousePosition>(defaultMouseDownPosition);
   const ignoreItemClickRef = useRef(false);
@@ -281,6 +282,7 @@ const SelectionArea = ({
         ref={selectionAreaRef}
         onMouseDown={disabled ? undefined : onSelectionAreaMouseDown}
         onClick={disabled ? undefined : onSelectionAreaClick}
+        {...props}
       >
         {children}
       </div>
