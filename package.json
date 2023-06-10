@@ -23,6 +23,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://roychen3.github.io/react-selection /",
   "browserslist": [
     ">0.2%",
     "not dead",
