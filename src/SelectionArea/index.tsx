@@ -137,16 +137,24 @@ const SelectionArea = ({
         }
       }
     };
+    const onDocumentClick = () => {
+      if (ignoreItemClickRef.current) {
+        console.log('onDocumentClick');
+        ignoreItemClickRef.current = false;
+      }
+    };
 
     if (!disabled) {
       document.addEventListener('mousemove', onSelectionAreaMouseMove);
       document.addEventListener('mouseup', onSelectionAreaMouseUp);
+      document.addEventListener('click', onDocumentClick);
     }
 
     return () => {
       if (!disabled) {
         document.removeEventListener('mousemove', onSelectionAreaMouseMove);
         document.removeEventListener('mouseup', onSelectionAreaMouseUp);
+        document.removeEventListener('click', onDocumentClick);
       }
     };
   }, [
@@ -160,7 +168,7 @@ const SelectionArea = ({
   const onSelectionAreaMouseDown = (event: React.MouseEvent) => {
     event.preventDefault();
     setSelectionBoxOpen(true);
-    onStart?.(selectedElements, event.nativeEvent);
+    onStart?.(selectedElements, event);
     mouseDownPositionRef.current = {
       x: event.clientX,
       y: event.clientY,
@@ -263,7 +271,7 @@ const SelectionArea = ({
           event
         );
         updateSelectedElements(newSelectedElements);
-        onItemClick?.(addSelectedElement, event.nativeEvent);
+        onItemClick?.(addSelectedElement, event);
         if (!event.shiftKey) {
           currentActiveElementRef.current = [addSelectedElement];
         }
@@ -272,7 +280,7 @@ const SelectionArea = ({
         updateSelectedElements(newSelectedElements);
       }
     }
-    onClick?.(newSelectedElements, event.nativeEvent);
+    onClick?.(newSelectedElements, event);
     ignoreItemClickRef.current = false;
   };
 
