@@ -139,7 +139,6 @@ const SelectionArea = ({
     };
     const onDocumentClick = () => {
       if (ignoreItemClickRef.current) {
-        console.log('onDocumentClick');
         ignoreItemClickRef.current = false;
       }
     };
