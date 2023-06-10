@@ -2,6 +2,8 @@
 
 Mock Desktop OS mouse selection
 
+[DEMO](https://roychen3.github.io/react-selection/)
+
 ## Getting Started
 
 ```bash
