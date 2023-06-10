@@ -27,10 +27,10 @@ function Component() {
       children     // ReactNode
       disabled     // boolean | undefined
       onChange     // (selectedElements: Element[]) => void | undefined
-      onStart      // (selectedElements: Element[], event: MouseEvent) => void | undefined
+      onStart      // (selectedElements: Element[], event: React.MouseEvent) => void | undefined
       onEnd        // (selectedElements: Element[], event: MouseEvent) => void | undefined
-      onClick      // (selectedElements: Element[], event: MouseEvent) => void | undefined
-      onItemClick  // (selectedElement: Element, event: MouseEvent) => void | undefined
+      onClick      // (selectedElements: Element[], event: React.MouseEvent) => void | undefined
+      onItemClick  // (selectedElement: Element, event: React.MouseEvent) => void | undefined
       getElement   // (() => Element[]) | string | undefined
     >
       {list.map((item) => (
