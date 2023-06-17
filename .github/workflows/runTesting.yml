@@ -1,0 +1,22 @@
+name: Run Testing
+permissions:
+  contents: write
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  testing:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: test
+        run: |
+          npm install
+          npm run test -- --coverage
