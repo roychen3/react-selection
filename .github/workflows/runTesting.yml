@@ -9,7 +9,7 @@ on:
     branches:
       - main
 jobs:
-  deploy:
+  testing:
     concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
