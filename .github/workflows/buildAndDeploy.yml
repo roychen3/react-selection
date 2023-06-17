@@ -2,7 +2,9 @@ name: Build and Deploy
 permissions:
   contents: write
 on:
-  push:
+  workflow_run:
+    workflows: [Run Testing]
+    types: [completed]
     branches:
       - main
 jobs:
