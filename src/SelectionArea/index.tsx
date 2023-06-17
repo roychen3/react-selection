@@ -46,11 +46,8 @@ const SelectionArea = ({
     if (typeof getElement === 'function') {
       return getElement();
     }
-    if (typeof getElement === 'string') {
-      const result = selectionAreaRef.current.querySelectorAll(getElement);
-      return Array.from(result);
-    }
-    return [];
+    const result = selectionAreaRef.current.querySelectorAll(getElement);
+    return Array.from(result);
   }, [getElement]);
   const updateSelectedElements = useCallback(
     (newSelectedElements: Element[]) => {
@@ -290,11 +287,16 @@ const SelectionArea = ({
         onMouseDown={disabled ? undefined : onSelectionAreaMouseDown}
         onClick={disabled ? undefined : onSelectionAreaClick}
         {...props}
+        data-testid="selection-area"
       >
         {children}
       </div>
       {selectionBoxOpen ? (
-        <div aria-haspopup ref={selectionBoxRef}></div>
+        <div
+          aria-haspopup
+          ref={selectionBoxRef}
+          data-testid="selection-box"
+        ></div>
       ) : null}
     </>
   );
